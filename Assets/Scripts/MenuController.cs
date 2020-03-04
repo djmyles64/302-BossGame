@@ -7,7 +7,8 @@ public class MenuController : MonoBehaviour
 {
 
     EventSystem events;
-    
+
+
     void Start()
     {
         GetComponentInChildren<EventSystem>();
@@ -40,7 +41,6 @@ public class MenuController : MonoBehaviour
     {
         print("button 4 pressed");
     }
-    
-    
+
 
 }

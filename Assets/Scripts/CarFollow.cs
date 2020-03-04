@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowCurve : MonoBehaviour
+public class CarFollow : MonoBehaviour
 {
     public BezierCurve curve;
     [Range(0, 1)] public float percent = 0;
 
-    public bool shouldAnimate = false;
+    public bool shouldAnimate = true;
 
     public AnimationCurve speed;
     public float animationLength = 5;
@@ -17,20 +17,22 @@ public class FollowCurve : MonoBehaviour
 
     void Update()
     {
-        if(Input.anyKeyDown)
-        {
-            shouldAnimate = true;
-            //print("KEYPRESSED");
-        }
 
-        if(shouldAnimate)
+        if (shouldAnimate)
         {
             timeCurrent += Time.deltaTime;
             percent = timeCurrent / animationLength;
-            percent = Mathf.Clamp(percent, 0, 1);
+            //percent = Mathf.Clamp(percent, 0, 1);
+
+        if(percent >= 1)
+            {
+                timeCurrent = 0;
+            }
         }
 
         SetPositionToCurve();
+
+        
     }
 
 

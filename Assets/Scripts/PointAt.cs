@@ -15,6 +15,7 @@ public class PointAt : MonoBehaviour
         Vector3 look = target.position - transform.position;
         look.Normalize();
 
-        transform.rotation = Quaternion.LookRotation(look, Vector3.up);
+        Quaternion targetRot = Quaternion.LookRotation(look, Vector3.up);
+        transform.rotation = AnimMath.Lerp(transform.rotation, targetRot, .01f);
     }
 }
