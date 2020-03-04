@@ -4,43 +4,20 @@ using UnityEngine;
 
 public class FollowCurve : MonoBehaviour
 {
-
     public BezierCurve curve;
     [Range(0, 1)] public float percent = 0;
 
-    public bool shouldAnimate = true;
-
-    public AnimationCurve speed;
-    public float animationLength = 5;
-
-
-    float timeCurrent = 0;
+    void Start()
+    {
+        
+    }
 
     
     void Update()
     {
-        if (shouldAnimate)
+        if(curve)
         {
-            timeCurrent += Time.deltaTime;
-            percent = timeCurrent / animationLength;
-            percent = Mathf.Clamp(percent, 0, 1);
+            transform.position = curve.FindPositionAt(percent);
         }
-
-        SetPositionToCurve();
-    }
-
-    private void SetPositionToCurve()
-    {
-        if (curve)
-        {
-            float p = speed.Evaluate(percent);
-
-            transform.position = curve.FindPositionAt(p);
-        }
-    }
-
-    void OnValidate()
-    {
-        SetPositionToCurve();
     }
 }

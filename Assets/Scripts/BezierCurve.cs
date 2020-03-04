@@ -7,22 +7,22 @@ using UnityEditor;
 public class BezierCurve : MonoBehaviour
 {
     /// <summary>
-    /// the resolution to calculate each individual curve
-    /// not the whole spline. A spline with n points will have 
+    /// The resolution to calculate each individual curve 
+    /// (not the whole spline). A spline with n points will have
     /// a total resolution of RESOLUTION * (n - 2)
     /// </summary>
     public const int RESOLUTION = 10;
 
     public Vector3[] points = new Vector3[0];
 
-    //////// Cached values:
+    ///////////// Cached values:
 
     public Vector3[] worldPoints { get; private set; }
     float[] curveLengths = new float[0];
     float splineLength = 0;
 
-    ////////////////
-
+    //////////////////////////////////////
+    
     
     void Update()
     {
@@ -32,7 +32,6 @@ public class BezierCurve : MonoBehaviour
     {
         CacheSplineData();
     }
-
     public void CacheSplineData()
     {
         CalcWorldPositions();
@@ -50,7 +49,7 @@ public class BezierCurve : MonoBehaviour
             pts[i] = points[i];
         }
 
-        if (pts.Length == 0) pts[0] = Vector3.zero;
+        if (pts.Length == 1) pts[0] = Vector3.zero;
         else if (pts.Length == 2) pts[1] = pts[0] + Vector3.right;
         else
         {
@@ -59,28 +58,25 @@ public class BezierCurve : MonoBehaviour
             Vector3 dir = posLast - pos2ndToLast;
             pts[pts.Length - 1] = posLast + dir;
         }
-
         points = pts;
-
     }
 
     public Vector3 FindPositionAt(float p)
     {
-        if (worldPoints == null) return Vector3.zero;
+
         if (worldPoints.Length == 0) return Vector3.zero;
-        if (worldPoints.Length == 1) return worldPoints[0];
+        if (worldPoints.Length == 1) return points[0];
         if (worldPoints.Length == 2) return AnimMath.Lerp(worldPoints[0], worldPoints[1], p);
 
-
         Vector3 result = Vector3.zero;
-        float leftValue = 0;
 
+        float leftValue = 0;
         for(int i = 0; i < curveLengths.Length; i++)
         {
             float rightValue = leftValue + curveLengths[i];
             float rightPercent = rightValue / splineLength;
 
-            if(rightPercent >= p)
+            if(rightPercent >= p )
             {
                 float leftPercent = leftValue / splineLength;
                 float curvePercent = (p - leftPercent) / (rightPercent - leftPercent);
@@ -97,16 +93,14 @@ public class BezierCurve : MonoBehaviour
             }
             leftValue = rightValue;
         }
-        
-        return result;
 
+        return result;
     }
 
     void OnDrawGizmos() {
 
         Gizmos.color = Color.gray;
-        for(int i = 1; i < worldPoints.Length; i++)
-        {
+        for(int i = 1; i < worldPoints.Length; i++) {
 
             Vector3 p1 = worldPoints[i - 1];
             Vector3 p2 = worldPoints[i];
@@ -119,7 +113,7 @@ public class BezierCurve : MonoBehaviour
 
     void DrawSpline() {
 
-        int numOfCurves = worldPoints.Length - 2;
+        int numOfCurves = points.Length - 2;
 
         for (int i = 1; i <= numOfCurves; i++) {
 
@@ -135,6 +129,7 @@ public class BezierCurve : MonoBehaviour
     }
     void DrawCurve(Vector3 a, Vector3 b, Vector3 c) {
         
+
         Vector3 pos1 = new Vector3();
         for (int i = 0; i <= RESOLUTION; i++) {
             float p = i / (float)RESOLUTION;
@@ -142,16 +137,14 @@ public class BezierCurve : MonoBehaviour
             if(i > 0) Gizmos.DrawLine(pos1, pos2);
             pos1 = pos2;
         }
-
-        
     }
 
     void CalcWorldPositions()
     {
-        worldPoints = new Vector3[worldPoints.Length];
-        for(int i = 0; i < worldPoints.Length; i++)
+        worldPoints = new Vector3[points.Length];
+        for(int i = 0; i < points.Length; i++)
         {
-            worldPoints[i] = transform.TransformPoint(worldPoints[i]);
+            worldPoints[i] = transform.TransformPoint(points[i]);
         }
     }
     void LengthOfSpline()
@@ -167,10 +160,13 @@ public class BezierCurve : MonoBehaviour
             curveLengths = new float[0];
             splineLength = (worldPoints[0] - worldPoints[1]).magnitude;
             return;
+
         }
+
 
         int numOfCurves = worldPoints.Length - 2;
         curveLengths = new float[numOfCurves];
+        splineLength = 0;
 
         for (int i = 1; i <= numOfCurves; i++)
         {
@@ -187,6 +183,7 @@ public class BezierCurve : MonoBehaviour
             splineLength += length;
         }
     }
+
     /// <summary>
     /// Calculate the length of the bezier curve from A to C.
     /// </summary>
@@ -197,7 +194,6 @@ public class BezierCurve : MonoBehaviour
     float LengthOfCurve(Vector3 a, Vector3 b, Vector3 c)
     {
         float result = 0;
-        
 
         Vector3 pos1 = new Vector3();
         for (int i = 0; i <= RESOLUTION; i++)
@@ -207,6 +203,8 @@ public class BezierCurve : MonoBehaviour
             if (i > 0) result += (pos2 - pos1).magnitude;
             pos1 = pos2;
         }
+
+
         return result;
     }
 }

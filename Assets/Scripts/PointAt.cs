@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class PointAt : MonoBehaviour
 {
-
     public Transform target;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (target == null) return;
@@ -21,7 +15,6 @@ public class PointAt : MonoBehaviour
         Vector3 look = target.position - transform.position;
         look.Normalize();
 
-        Quaternion targetRot = Quaternion.LookRotation(look, Vector3.up);
-        transform.rotation = AnimMath.Lerp(transform.rotation, targetRot, .01f);
+        transform.rotation = Quaternion.LookRotation(look, Vector3.up);
     }
 }

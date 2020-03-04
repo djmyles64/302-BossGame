@@ -12,6 +12,7 @@ public class BezierCurveEditor : Editor
     override public void OnInspectorGUI()
     {
         base.OnInspectorGUI();
+
         if(GUILayout.Button("Add Point"))
         {
             (target as BezierCurve).AddPoint();
@@ -27,7 +28,8 @@ public class BezierCurveEditor : Editor
     {
         BezierCurve curve = (BezierCurve)target;
 
-        
+
+
         for (int i = 0; i < curve.worldPoints.Length; i++)
         {
             if (Handles.Button(curve.worldPoints[i], Quaternion.identity, .1f, .05f, Handles.CubeHandleCap))
@@ -45,7 +47,7 @@ public class BezierCurveEditor : Editor
             if (EditorGUI.EndChangeCheck())
             {
                 Undo.RecordObject(target, "Changed path points");
-                curve.points[selectedIndex] = curve.transform.InverseTransformPoint(newPos);
+                curve.points[selectedIndex] = curve.transform.InverseTransformPoint (newPos);
                 curve.CacheSplineData();
             }
         }
