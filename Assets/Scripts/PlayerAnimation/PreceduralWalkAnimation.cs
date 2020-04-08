@@ -30,8 +30,8 @@ public class PreceduralWalkAnimation : MonoBehaviour
     {
         float time = (Time.time + sinWaveOffset * Mathf.PI) * sinWaveSpeed;
 
-        float offsetZ = Mathf.Sin(time);
-        float offsetY = Mathf.Cos(time);
+        float offsetZ = Mathf.Sin(time) * distanceZ;
+        float offsetY = Mathf.Cos(time) * distanceY;
         if (offsetY < 0) offsetY = 0;
 
         Vector3 finalPosition = startingPosition;
