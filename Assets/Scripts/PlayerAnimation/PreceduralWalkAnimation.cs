@@ -38,7 +38,7 @@ public class PreceduralWalkAnimation : MonoBehaviour
 
         finalPosition.x *= scaleX;
         finalPosition.y += offsetY; // move final position up or down
-        //finalPosition.z += offsetZ; // move final position forward or backward
+        finalPosition.z += offsetZ; // move final position forward or backward
 
         transform.localPosition = finalPosition;
     }
