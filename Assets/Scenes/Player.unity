@@ -521,6 +521,37 @@ MonoBehaviour:
   - {fileID: 84250890}
   - {fileID: 84250887}
   - {fileID: 84250888}
+--- !u!143 &84250918
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84250875}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2.07
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.98, z: 0}
+--- !u!114 &84250919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84250875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b354fd8b72fce544ca4e586d6995e029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!1 &292896149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,13 +1175,13 @@ MonoBehaviour:
   m_Data:
     m_ConstrainedObject: {fileID: 0}
     m_SourceObjects:
-      m_Length: 1
+      m_Length: 2
       m_Item0:
         transform: {fileID: 0}
         weight: 1
       m_Item1:
         transform: {fileID: 0}
-        weight: 0
+        weight: 1
       m_Item2:
         transform: {fileID: 0}
         weight: 0
@@ -1175,8 +1206,8 @@ MonoBehaviour:
       y: 1
       z: 1
     m_MaintainOffset: 1
-  m_SourceObjectsGUIToggle: 0
-  m_SettingsGUIToggle: 0
+  m_SourceObjectsGUIToggle: 1
+  m_SettingsGUIToggle: 1
 --- !u!1 &1725651166
 GameObject:
   m_ObjectHideFlags: 0
