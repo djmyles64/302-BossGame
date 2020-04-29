@@ -1248,19 +1248,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 316037583}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeda7bfbf984f2a4da5ab4b8967b115d, type: 3}
+  m_Script: {fileID: 11500000, guid: 796b75e345bd64d47a31edd757bd2670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 1
+  m_Weight: 0.004
   m_Data:
-    m_Root: {fileID: 195720841}
-    m_Mid: {fileID: 195720840}
+    m_Root: {fileID: 195720842}
     m_Tip: {fileID: 195720839}
     m_Target: {fileID: 316037584}
-    m_Hint: {fileID: 0}
-    m_TargetPositionWeight: 1
-    m_TargetRotationWeight: 1
-    m_HintWeight: 1
+    m_ChainRotationWeight: 1
+    m_TipRotationWeight: 1
+    m_MaxIterations: 15
+    m_Tolerance: 0.0001
     m_MaintainTargetPositionOffset: 0
     m_MaintainTargetRotationOffset: 0
   m_SourceObjectsGUIToggle: 1
@@ -1280,7 +1279,7 @@ MonoBehaviour:
   sinWaveOffset: 1
   sinWaveSpeed: 7
   scaleX: 1
-  distanceY: 0.006
+  distanceY: 0.004
   distanceZ: -0.006
 --- !u!1 &316370178
 GameObject:
@@ -1821,19 +1820,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 639491366}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeda7bfbf984f2a4da5ab4b8967b115d, type: 3}
+  m_Script: {fileID: 11500000, guid: 796b75e345bd64d47a31edd757bd2670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 1
+  m_Weight: 0.004
   m_Data:
-    m_Root: {fileID: 195720846}
-    m_Mid: {fileID: 195720845}
+    m_Root: {fileID: 195720847}
     m_Tip: {fileID: 195720844}
     m_Target: {fileID: 639491367}
-    m_Hint: {fileID: 0}
-    m_TargetPositionWeight: 1
-    m_TargetRotationWeight: 1
-    m_HintWeight: 1
+    m_ChainRotationWeight: 1
+    m_TipRotationWeight: 1
+    m_MaxIterations: 15
+    m_Tolerance: 0.0001
     m_MaintainTargetPositionOffset: 0
     m_MaintainTargetRotationOffset: 0
   m_SourceObjectsGUIToggle: 1
@@ -1853,7 +1851,7 @@ MonoBehaviour:
   sinWaveOffset: 0
   sinWaveSpeed: 7
   scaleX: 1
-  distanceY: 0.006
+  distanceY: 0.004
   distanceZ: -0.006
 --- !u!1 &724737391
 GameObject:
@@ -3076,7 +3074,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 1
   m_Data:
-    m_Root: {fileID: 195720830}
+    m_Root: {fileID: 195720831}
     m_Tip: {fileID: 195720827}
     m_Target: {fileID: 1651994479}
     m_ChainRotationWeight: 1
@@ -3492,7 +3490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 1
   m_Data:
-    m_Root: {fileID: 195720836}
+    m_Root: {fileID: 195720837}
     m_Tip: {fileID: 195720833}
     m_Target: {fileID: 1886385452}
     m_ChainRotationWeight: 1
